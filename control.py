@@ -23,7 +23,7 @@ def left_button_on_click(event):
     """左移動ボタンがクリックされたときの処理"""
     player_move(-1 * PLAYER_MOVE)  # 左に移動
 
-def keydown_event(event):
+def key_down(event):
     """キーが押されたときの処理"""
     if event.key == "ArrowRight":
         right_button_on_click(event)  # 右に移動
