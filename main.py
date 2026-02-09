@@ -60,7 +60,7 @@ def update_ball():
     by = game["ball_y"] + dy # ボールの新しいY座標
     # プレーヤーのバーとの衝突判定
     px = game["px"] # プレイヤーのバーのX座標
-    if (by >= PLAYER_Y-10) and (px <= bx < (px + PLAYER_W)):
+    if (by >= PLAYER_Y-18) and (px <= bx < (px + PLAYER_W)):
         ball_turn_angle(180) #角度変更
         # game["ball_dir"] =225 + random.randint(0,90)
     # 壁との衝突判定
