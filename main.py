@@ -5,7 +5,7 @@ from js import setTimeout, document
 # 定数の宣言
 INTERVAL = 50 # ボールの移動間隔（ミリ秒）
 PLAYER_W = 100 # プレイヤーのバーの幅
-PLAYER_Y = 470  # プレイヤーのバーのY座標
+PLAYER_Y = 480  # プレイヤーのバーのY座標
 PLAYER_MOVE = 30 # プレイヤーのバーの移動量
 BALL_SPEED = 15 # ボールの速度
 BALL_SIZE = 16 # ボールのサイズ
