@@ -18,7 +18,7 @@ def player_move(dx):
 def key_down(event):
     """キーが押されたときの処理"""
     if event.key == "ArrowRight":
-       player_move(-1 * PLAYER_MOVE)  # 右に移動
+       player_move(PLAYER_MOVE)  # 右に移動
     elif event.key == "ArrowLeft":
         player_move(PLAYER_MOVE)  # 左に移動
 

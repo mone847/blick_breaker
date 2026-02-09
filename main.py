@@ -63,7 +63,7 @@ def update_ball():
     if (by >= PLAYER_Y) and (px <= bx < (px + PLAYER_W)):
         game["ball_dir"] = 255 + random.randint(0,90)
     # 壁との衝突判定
-    elif (bx < BALL_SIZE // 2) or (bx >= (canvas.width - BALL_SIZE // 2)) or (by <= BALL_SIZE // 2):
+    elif (bx < BALL_SIZE) or (bx >= (canvas.width - BALL_SIZE)) or (by <= BALL_SIZE):
         ball_turn_angle(90) #角度変更
     # ブロックとの衝突判定
     elif check_blocks(bx,by):
