@@ -1,14 +1,9 @@
 def start_button_on_click(event):
-
-mouse_active = False
-_last_t = None
-_last_px = None
-
-def start_button_on_click(event):
     document.getElementById("start_button").disabled = True
     init_game()
     # 速度推定の初期化
-    global _last_t, _last_px
+    global mouse_active,_last_t, _last_px
+    mouse_active = False
     _last_t = performance.now()
     _last_px = game["px"]
     game["paddle_vx"] = 0.0
