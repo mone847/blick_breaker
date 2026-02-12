@@ -83,14 +83,36 @@ def update_ball():
     elif bx + r >= canvas.width:
         bx = canvas.width - r
         dx = -dx
+
     # プレイヤーバー
     px = game["px"]
     if (by + r >= PLAYER_Y) and (px <= bx <= px + PLAYER_W):
         by = PLAYER_Y - r
-        dy = -abs(dy)   # 必ず上に返す
-        # 当たった位置で横方向を調整
+
+        # 反射：必ず上に返す
+        dy = -abs(dy)
+
+        # 当たった位置（-1.0 ～ +1.0）
         hit = (bx - (px + PLAYER_W/2)) / (PLAYER_W/2)
-        dx += hit * 1.5
+
+        # バーの横速度（+右 / -左）を打球に反映
+        pvx = game.get("paddle_vx", 0.0)
+
+        # hit：端ほど角度が付く
+        # pvx：バーを振るほど dx がその方向に寄る（左に素早く振れば左に返しやすい）
+        dx = dx + hit * 1.8 + pvx * 0.35
+
+        # 速度の上限・下限（暴走/失速防止）
+        sp = math.hypot(dx, dy)
+        MIN_S, MAX_S = 7, 25
+        target = sp
+        if target < MIN_S: target = MIN_S
+        if target > MAX_S: target = MAX_S
+        if sp > 0:
+            scale = target / sp
+            dx *= scale
+            dy *= scale
+
      # ブロック
     elif check_blocks(bx, by):
         dy = -dy
