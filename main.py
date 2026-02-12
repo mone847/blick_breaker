@@ -1,6 +1,8 @@
 import random
 import math
-from js import setTimeout, document
+from js import setTimeout, document, performance
+from pyodide.ffi import create_proxy
+
 
 # 定数の宣言
 INTERVAL = 50 # ボールの移動間隔（ミリ秒）
@@ -48,6 +50,7 @@ def init_game():
         "ball_y": canvas.height / 2, # ボールのY座標
         "dx": dx, 
         "dy": dy,
+        "paddle_vx": 0.0, # プレイヤーのバーの速度
         "game_over": False, # ゲームオーバー状態
     })
     
@@ -59,7 +62,7 @@ def game_loop():
     draw_screen() # 画面の更新
     # ゲームオーバーでなければ次のループをセット
     if not game["game_over"]:
-        setTimeout(game_loop, INTERVAL)
+        setTimeout(create_proxy(game_loop), INTERVAL)
 
 def update_ball():
     global dx,dy
