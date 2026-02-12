@@ -23,6 +23,7 @@ canvas = document.getElementById("canvas") # Canvas要素を取得
 context = canvas.getContext("2d") # 2D描画コンテキストを取得
 blocks = [] # ブロックのリスト
 game = {"game_over":True} # ゲームの状態を管理する辞書
+loop_proxy = None
 
 def init_game():
     """ゲームの初期化"""
@@ -61,7 +62,9 @@ def game_loop():
     draw_screen() # 画面の更新
     # ゲームオーバーでなければ次のループをセット
     if not game["game_over"]:
-        setTimeout(create_proxy(game_loop), INTERVAL)
+            if not game["game_over"]:
+        setTimeout(loop_proxy, INTERVAL)
+        # setTimeout(create_proxy(game_loop), INTERVAL)
         # setTimeout(game_loop, INTERVAL)
 
 def update_ball():
