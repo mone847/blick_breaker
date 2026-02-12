@@ -91,3 +91,4 @@ def key_down(event):
 
 # キー押下イベントリスナーの登録
 document.addEventListener("keydown", key_down)
+document.getElementById("start_button").addEventListener("click", start_button_on_click)
